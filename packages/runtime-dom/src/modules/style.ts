@@ -7,7 +7,7 @@ type Style = string | Record<string, string | string[]> | null
 
 export function patchStyle(el: Element, prev: Style, next: Style) {
   const style = (el as HTMLElement).style
-  const currentDisplay = style.display
+  const currentDisplay = window.getComputedStyle(el).display
   const isCssString = isString(next)
   if (next && !isCssString) {
     if (prev && !isString(prev)) {
